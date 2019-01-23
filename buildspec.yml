@@ -23,5 +23,6 @@ phases:
 artifacts:
   files:
     - index.js
+    - newsController.js
     - package.json
     - node_modules/*
