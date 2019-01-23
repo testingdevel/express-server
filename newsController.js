@@ -3,7 +3,7 @@ const request = require('request-promise-native')
 
 const router = express.Router()
 
-
+// mapping function
 const mapTopStories = (story) => {
   return {
     id: story.id,
