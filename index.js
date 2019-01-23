@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
-const newsController = require('./newsController')
+const newsController = require('./controllers/newsController')
 
 const router = express.Router()
 
