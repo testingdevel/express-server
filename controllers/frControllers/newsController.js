@@ -9,26 +9,50 @@ const mapNeuroNewsItem = (item) => {
     title: item.title,
     source: 'neuro',
     sourceId: item.id,
-    image: item.typeAttributes.imageLarge,
-    publishedAt: item.publishedAt,
-    readablePublishedAt: item.readablePublishedAt,
-    updatedAt: item.updatedAt,
-    readableUpdatedAt: item.readableUpdatedAt,
-    numViewers: item.typeAttributes.trending.numViewers
+    image: item.summaryImage.concreteImages[0].mediaLink.href,
+    publishedAt: null,
+    readablePublishedAt: null,
+    updatedAt: item.publishedLastTimeAt,
+    readableUpdatedAt: null,
+    numViewers: null
   }
 }
 
 const router = express.Router()
 
-router.get('/top-stories', (req, res) => {
+// router.get('/top-stories', (req, res) => {
+//
+//   return request({
+//     uri: `https://services.radio-canada.ca/neuro/v1/themes/1/lineup?client_key=${key}`,
+//     json: true
+//   })
+//
+//   .then(data => {
+//     return res.send(data.pagedList.items[0])
+//   })
+// })
+
+router.get('/world', (req, res) => {
 
   return request({
-    uri: `https://services.radio-canada.ca/neuro/v1/themes/1/lineup?client_key=${key}`,
+    uri: 'https://services.radio-canada.ca//neuro/v1/themes/2/lineup',
     json: true
   })
 
   .then(data => {
-    return res.send(data.pagedList.items[0])
+    return res.send(data.pagedList.items.map(mapNeuroNewsItem))
+  })
+})
+
+router.get('/local', (req, res) => {
+
+  return request({
+    uri: 'https://services.radio-canada.ca/neuro/v1/regions/27/lineup?pageNumber=1',
+    json: true
+  })
+
+  .then(data => {
+    return res.send(data.pagedList.items.map(mapNeuroNewsItem))
   })
 })
 
