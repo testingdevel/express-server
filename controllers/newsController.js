@@ -14,7 +14,8 @@ const mapAggrNewsItem = (item) => {
     readablePublishedAt: item.readablePublishedAt,
     updatedAt: item.updatedAt,
     readableUpdatedAt: item.readableUpdatedAt,
-    numViewers: item.typeAttributes.trending.numViewers
+    numViewers: item.typeAttributes.trending.numViewers,
+    url: item.typeAttributes.url
   }
 }
 
