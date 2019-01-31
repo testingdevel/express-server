@@ -24,5 +24,7 @@ artifacts:
   files:
     - index.js
     - controllers/*
+    - controllers/enControllers/*
+    - controllers/frControllers/*
     - package.json
     - node_modules/*
